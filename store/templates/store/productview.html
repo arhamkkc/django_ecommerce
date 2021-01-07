@@ -1,0 +1,51 @@
+{% extends 'store/base.html' %}
+{% block content %}
+
+{% for prod in product %}
+
+<div class="container">
+  <div class="row">
+  <div
+      class="card col-lg-4 col-md-4 col-sm-6 col-xs-12"
+      style="width: fit-content"
+    >
+      <img src="{{prod.image.url}}" class="image-fluid" alt="nto found" style="height: 250px;" />
+      <div class="card-body">
+        <h5 class="card-title" id="namepr{{product.id}}">
+          {{prod.product_name}}
+        </h5>
+        <p class="card-text">{{prod.desc}}</p>
+        <h6>Price: <span id='pricepr{{product.id}}'>{{prod.price}}</span></h6>
+        <span id="divpr{{product.id}}" class="divpr">
+          <a href="/"><button id="pr{{product.id}}" class="btn btn-primary cart">
+            Home
+          </button> </a>
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-8 col-md-4 col-sm-6 col-xs-12" >
+
+      <h2> Name :  {{product.0.product_name}} </h2>
+      <h6> Desc: {{product.0.desc}} </h6>
+      <h5> price :{{product.0.price}} </h5>
+
+    </div>
+
+
+  </div>
+</div>
+{% endfor %}
+  
+{% endblock %}
+
+{% block js  %}
+<script>
+    if (localStorage.getItem("cart") == null) {
+    var cart = {};
+  } else {
+    cart = JSON.parse(localStorage.getItem("cart"));
+  }
+    document.getElementById('cart').innerHTML = Object.keys(cart).length;
+</script>
+{% endblock  %}

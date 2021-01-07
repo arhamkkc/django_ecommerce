@@ -1,0 +1,81 @@
+{% extends "store/base.html" %} {% block content %} Lorem ipsum dolor sit amet
+consectetur adipisicing elit. Repudiandae, explicabo aperiam molestias quasi
+aliquam sapiente natus autem dicta? Natus corporis dolorum quidem vitae.
+Inventore magnam ratione sed ipsam tenetur, alias labore? Non impedit incidunt
+sequi asperiores atque, assumenda quae velit illum aperiam quidem id voluptatum
+quos placeat laborum harum esse deserunt tenetur iusto necessitatibus modi
+consectetur consequatur natus eligendi! Iste numquam pariatur magnam eligendi
+quae sed maiores. Quidem, quod dignissimos asperiores tenetur unde harum
+eligendi magni. Atque a nisi unde facilis eius ad facere reiciendis illum.
+Doloremque delectus magnam odit sit commodi quidem, voluptate deleniti in quia
+sed, odio ratione quis doloribus esse corporis sunt assumenda, nesciunt
+necessitatibus. Enim accusamus at eaque dicta provident saepe unde quisquam,
+quae maxime amet iure sapiente voluptate quos esse qui facilis rerum laboriosam
+ducimus quasi deleniti. Dicta corporis, maxime provident voluptas magni laborum
+rerum praesentium qui amet, dolor doloremque reprehenderit sint inventore veniam
+nostrum quod ducimus ea. Suscipit impedit temporibus eaque rem consectetur unde
+laboriosam. Quia minima soluta cupiditate atque harum assumenda eum quae
+expedita recusandae dolorem debitis repellendus commodi porro cumque at
+laudantium esse, rerum temporibus dolore blanditiis quis ipsa. Nostrum ea soluta
+ipsam cupiditate libero odit sapiente fugiat ducimus voluptates. Error non
+minima unde debitis fugit, rerum aperiam numquam blanditiis placeat facilis eum
+reprehenderit in tempore perferendis iure aliquam libero atque sapiente.
+Reprehenderit, nam nulla non dignissimos quasi quam? Odio neque nam non ullam
+est reprehenderit dolorum. Tempore minus, voluptate commodi dignissimos dolore
+quae, mollitia aspernatur aperiam reprehenderit rerum facilis neque.
+Voluptatibus necessitatibus totam consequatur odio aperiam minus, nihil illo
+deserunt corrupti eius officia. Itaque dolorem porro natus exercitationem animi.
+Ullam perferendis vel aliquid iusto doloribus necessitatibus eaque
+reprehenderit, animi sunt earum quidem blanditiis? Ullam dolore ducimus quae
+deserunt expedita, adipisci cum earum soluta eius consequuntur. Repellendus sed
+accusamus esse nemo et quis culpa, nulla non pariatur, molestiae consectetur
+voluptates nesciunt minus soluta doloremque quidem itaque facilis repellat
+minima delectus optio ut. Unde harum perspiciatis quos minus non, cupiditate
+voluptatibus magni totam quibusdam numquam alias rem nostrum inventore qui
+veritatis corporis. Corporis quis nesciunt, quos necessitatibus aperiam at atque
+exercitationem alias vitae pariatur enim laudantium quam. Molestiae, ducimus
+quis perferendis eos vitae consectetur adipisci suscipit voluptates minima fuga.
+Deleniti, fuga assumenda animi cumque nulla atque modi earum accusantium odio
+aliquid molestiae rem ab eveniet corrupti iste repudiandae sequi tenetur
+laboriosam necessitatibus vitae quod recusandae quo fugit. Adipisci, vero culpa
+architecto beatae corrupti necessitatibus cum aut sapiente tempora laboriosam
+animi possimus nisi minima eos. Suscipit itaque perferendis impedit quos dolor
+ipsam, porro laboriosam beatae rerum culpa sit libero sunt, vel nostrum
+inventore quae laborum iusto. Dolore dolorum distinctio incidunt eius facilis
+quibusdam deleniti labore odit at nesciunt voluptates pariatur quaerat
+doloremque, exercitationem praesentium molestiae assumenda inventore totam quo
+hic placeat autem vero nihil aperiam. Facere accusantium, sint aliquam sunt
+velit eveniet laudantium exercitationem doloribus quae! Itaque autem optio
+fugiat explicabo esse nihil, molestias minus doloremque laudantium ratione in
+numquam eum perferendis aspernatur ipsa, obcaecati, repudiandae unde iure sed
+laboriosam omnis nobis dolor. Iste. {% endblock %}
+
+{% block js %}
+<script>
+
+    if(localStorage.getItem('cart')== null){
+      var cart = {};
+    }
+    else{
+       cart = JSON.parse(localStorage.getItem('cart'))
+       document.getElementById('cart').innerHTML = Object.keys(cart).length;
+    }
+    $('.cart').click(function(){
+      console.log('haaaa')
+      var idstr = this.id.toString();
+      console.log(idstr) 
+      if(cart[idstr] != undefined ){
+        cart[idstr] = cart[idstr] + 1;
+      }
+      else{
+        cart[idstr] = 1;
+      }
+      console.log(cart)
+      localStorage.setItem("cart",JSON.stringify(cart))
+      document.getElementById('cart').innerHTML = Object.keys(cart).length;
+  
+  });
+  $('#popcart').popover()
+document.getElementById('popcart').setAttribute('data-content','<h5> cart</h5>');
+  </script>
+{% endblock  %}
